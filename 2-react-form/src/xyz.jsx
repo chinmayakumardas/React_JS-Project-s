@@ -1,7 +1,8 @@
-import React from "react";
+
 import "./App.css";
+
 import { useState } from "react";
-const App = () => {
+function App() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -10,61 +11,60 @@ const App = () => {
     street: "",
     city: "",
     state: "",
-    pincode: "",
+    zip: "",
     comments: false,
     candidates: false,
     offers: false,
-    pushNotification: "",
+    pushNotification:"",
   });
-
   function changeHandler(event) {
     const {name, value, checked, type} = event.target;
-    setFormData((prev)=>({
+    setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
   }
-  function submitHandler(event) {
+  function submitHandler(event){
     event.preventDefault();
-    console.log(formData);
+    console.log(" printing the value of form data");
   }
+
   return (
-    <div className="flex flex-col py-4  justify-center items-center w-full px-auto bg-[#edf2f4] shadow-slate-50">
-      <h2 className="text-2xl font-bold">Application form</h2>
-      <form className="  flex flex-col w-[600px] h-[100%] px-10 bg-slate-200 rounded-md" onSubmit={submitHandler}>
+    <div className=" flex  justify-center items-center   w-full   h-screen py-[10px]">
+      <form className=" flex flex-col" onSubmit={submitHandler}>
         <label htmlFor="firstName">First Name</label>
         <input
           type="text"
-          className="px-5 outline outline-offset-2 outline-1  rounded-md"
-          id="firstName"
+          className="outline"
           name="firstName"
-          value={formData.firstName}
-          onChange={changeHandler}
           placeholder="Chinmaya"
+          id="firstName"
+          onChange={changeHandler}
+          value={formData.firstName}
         ></input>
         <label htmlFor="lastName">Last Name</label>
         <input
           type="text"
-          className="outline px-5 outline-offset-2 outline-1 rounded-md"
-          id="lastName"
           name="lastName"
-          value={formData.lastName}
-          onChange={changeHandler}
+          className="outline"
           placeholder="Das"
-        ></input>
-        <label htmlFor="email">Email address</label>
-        <input
-          type="email"
-          className="outline px-5 outline-offset-2 outline-1 rounded-md"
-          id="email"
-          name="email"
-          value={formData.email}
+          id="lastName"
           onChange={changeHandler}
-          placeholder="xyz@gmail.com"
+          value={formData.lastName}
+        ></input>
+        <label htmlFor="email">Email Address</label>
+        <input
+          type="text"
+          name=""
+          className="outline"
+          placeholder="chinmayakumar@gmail.com"
+          id="email"
+          onChange={changeHandler}
+          value={formData.email}
         ></input>
         <label htmlFor="country">Country</label>
         <select
-          className="outline px-5 outline-offset-2 outline-1 rounded-md"
+          className="outline"
           name="country"
           id="country"
           value={formData.country}
@@ -75,11 +75,10 @@ const App = () => {
           <option>china</option>
           <option>Pakistan</option>
         </select>
-
         <label htmlFor="street">Street Address</label>
         <input
           type="text"
-          className="outline px-5 outline-offset-2 outline-1 rounded-md"
+          className="outline"
           name="street"
           placeholder="Patia,Kanan Vihar"
           id="street"
@@ -89,7 +88,7 @@ const App = () => {
         <label htmlFor="city">City</label>
         <input
           type="text"
-          className="outline px-5 outline-offset-2 outline-1 rounded-md"
+          className="outline"
           name="city"
           placeholder="Bhubaneswar"
           id="street"
@@ -99,25 +98,24 @@ const App = () => {
         <label htmlFor="state">State/Provinance</label>
         <input
           type="text"
-          className="outline px-5 outline-offset-2 outline-1 rounded-md"
+          className="outline"
           name="state"
           placeholder="Odisha"
           id="state"
           onChange={changeHandler}
           value={formData.state}
         ></input>
-         <label htmlFor="zip">Zip/Pincode</label>
+        <label htmlFor="zip">Zip/Pincode</label>
         <input
           type="text"
-          className="outline px-5 outline-offset-2 outline-1 rounded-md"
-          name="pincode"
+          className="outline"
+          name="zip"
           placeholder="751024"
-          id="pincode"
+          id="zip"
           onChange={changeHandler}
-          value={formData.pincode}
+          value={formData.zip}
         ></input>
-
-<fieldset>
+        <fieldset>
           <legend>By Email</legend>
           <div className="flex gap-2">
             <input
@@ -172,12 +170,11 @@ const App = () => {
           
         </fieldset>
 
-        <button className="rounded-lg mx-auto h-[40px] w-[100px] bg-blue-500 text-white rounder
-        d font-bold py-2 px-4 outline outline-cyan-2 outline-4">Save</button>
-      
+        <button className="bg-blue-500 text-white rounder font-bold py-2 px-4">Save</button>
       </form>
+
     </div>
   );
-};
+}
 
 export default App;
